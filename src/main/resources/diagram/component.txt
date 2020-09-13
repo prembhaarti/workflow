@@ -1,0 +1,50 @@
+@startuml
+
+title Workflow Components
+left to right direction
+
+package "Transformer" {
+    [Transformer] as transformer
+    [WebScrapper] as webScrapper
+    [TextSpinner] as textSpinner
+    [Converter] as converter
+    [TemplateImplementer] as templateImpl
+}
+
+[Ui] as ui
+[Workflow] as workflow
+[Scheduler] as scheduler
+[Visualizer] as visualizer
+[Analyser] as analyser
+[Combiner] as combiner
+[Bot] as bot
+[CmdExecutor] as cmdExecutor
+
+package "Extractor and Loader" {
+    [FileHandler] as fileHandler
+    [DataManager] as dataManager
+    [DBHandler] as dbHandler
+    [Http] as http
+}
+
+scheduler -> workflow
+transformer -> webScrapper
+transformer -> textSpinner
+transformer -> templateImpl
+
+workflow -> dataManager
+workflow -> combiner
+workflow -> visualizer
+workflow -> analyser
+workflow -> bot
+workflow -> transformer
+workflow -> cmdExecutor
+ui -> scheduler
+ui -> workflow
+
+dataManager -> http
+transformer -> converter
+dataManager -> fileHandler
+dataManager -> dbHandler
+
+@enduml

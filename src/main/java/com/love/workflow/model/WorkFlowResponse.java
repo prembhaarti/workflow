@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class WorkFlowResponse {
     private String response;
-    private Status status;
+    private Status status = Status.STARTED;
 }

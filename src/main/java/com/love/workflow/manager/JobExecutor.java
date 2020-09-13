@@ -16,7 +16,7 @@ public class JobExecutor {
     public void execute(Job job) throws IOException {
         switch (job.getType()){
             case HTTP:
-                System.out.println(httpJobExecutor.execute(job));
+                httpJobExecutor.execute(job);
                 break;
         }
     }
